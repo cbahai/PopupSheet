@@ -14,17 +14,17 @@ extension UIViewController: PopupSheetContent {}
 
 public class PopupSheetViewController: UIViewController {
     
-    /// 坐落位置枚举
-    public enum Location {
-        case top
-        case bottom
+    /// 弹出方向枚举
+    public enum PopupDirection {
+        case up
+        case down
         case left
         case right
     }
     
     /// 偏移量
     public var offset: CGFloat = 0
-    /// 用来计算偏移量的视图
+    /// 用来计算偏移量的视图(优先于offset)
     public var offsetView: UIView?
     /// 在原有的偏移量额外添加的偏移量
     public var addOffset: CGFloat = 0
@@ -33,24 +33,24 @@ public class PopupSheetViewController: UIViewController {
     
     /// 内容
     var content: PopupSheetContent!
-    /// 坐落位置
-    var location: Location!
+    /// 弹出方向
+    var direction: PopupDirection!
     
     @IBOutlet weak var contentContainerViewOffsetConstraint: NSLayoutConstraint!
-    @IBOutlet weak var contentContainerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentContainerViewLengthConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentContainerViewHiddenConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentContainerView: UIView!
     @IBOutlet weak var maskButton: UIButton!
     
-    public static func newInstance(withContent content: PopupSheetContent, location: Location = .top) -> PopupSheetViewController {
+    public static func newInstance(withContent content: PopupSheetContent, direction: PopupDirection = .up) -> PopupSheetViewController {
         let bundle = Bundle(for: self.classForCoder())
         
         let identifier: String
-        switch location {
-        case .top:
-            identifier = "top"
-        case .bottom:
-            identifier = "bottom"
+        switch direction {
+        case .up:
+            identifier = "up"
+        case .down:
+            identifier = "down"
         case .left:
             identifier = "left"
         case .right:
@@ -59,7 +59,7 @@ public class PopupSheetViewController: UIViewController {
         
         let vc = UIStoryboard(name: "PopupSheet", bundle: bundle).instantiateViewController(withIdentifier: identifier) as! PopupSheetViewController
         vc.content = content
-        vc.location = location
+        vc.direction = direction
         
         return vc
     }
@@ -70,12 +70,15 @@ public class PopupSheetViewController: UIViewController {
         // 偏移量设置 {
         if let offsetView = self.offsetView {
             let frame = offsetView.superview!.convert(offsetView.frame, to: self.view)
-            switch location! {
-            case .top:
+            switch direction! {
+            case .up:
+                offset = self.view.frame.height - frame.origin.y
+            case .down:
                 offset = frame.origin.y + frame.height
-            case .bottom: ()
-            case .left: ()
-            case .right: ()
+            case .left:
+                offset = self.view.frame.width - frame.origin.x
+            case .right:
+                offset = frame.origin.x + frame.width
             }
         }
         offset += addOffset
@@ -86,11 +89,21 @@ public class PopupSheetViewController: UIViewController {
         contentContainerViewOffsetConstraint.constant = offset
         
         if let content = self.content as? UIView {
-            contentContainerViewHeightConstraint.constant = content.frame.height
+            switch direction! {
+            case .up, .down:
+                contentContainerViewLengthConstraint.constant = content.frame.height
+            case .left, .right:
+                contentContainerViewLengthConstraint.constant = content.frame.width
+            }
             add(subView: content, to: contentContainerView)
         } else if let content = self.content as? UIViewController {
             addChildViewController(content)
-            contentContainerViewHeightConstraint.constant = content.view.frame.height
+            switch direction! {
+            case .up, .down:
+                contentContainerViewLengthConstraint.constant = content.view.frame.height
+            case .left, .right:
+                contentContainerViewLengthConstraint.constant = content.view.frame.width
+            }
             add(subView: content.view, to: contentContainerView)
             content.didMove(toParentViewController: self)
         }
