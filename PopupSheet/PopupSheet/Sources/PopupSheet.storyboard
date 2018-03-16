@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Popup Sheet View Controller-->
+        <scene sceneID="DH6-fQ-Wox">
+            <objects>
+                <viewController storyboardIdentifier="top" id="PDu-9B-QtI" customClass="PopupSheetViewController" customModule="PopupSheet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hKE-Dc-zDF"/>
+                        <viewControllerLayoutGuide type="bottom" id="LJH-k3-HPk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wkh-7f-60k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIq-8V-IuZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="fZS-8M-ZFv"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="dismissButtonClick" destination="PDu-9B-QtI" eventType="touchUpInside" id="l9v-C0-3fo"/>
+                                </connections>
+                            </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXd-V8-PtS">
+                                <rect key="frame" x="0.0" y="100" width="375" height="712"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sk-FY-6oz">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="750" constant="300" id="Ube-fN-A2m"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjp-HH-NBl">
+                                        <rect key="frame" x="0.0" y="300" width="375" height="412"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19640946061643835" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="dismissButtonClick" destination="PDu-9B-QtI" eventType="touchUpInside" id="g7W-Db-gTG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Cjp-HH-NBl" secondAttribute="trailing" id="3qE-aP-dFr"/>
+                                    <constraint firstAttribute="trailing" secondItem="2sk-FY-6oz" secondAttribute="trailing" id="7iH-eM-Pfe"/>
+                                    <constraint firstItem="2sk-FY-6oz" firstAttribute="leading" secondItem="GXd-V8-PtS" secondAttribute="leading" id="ABF-cm-5K5"/>
+                                    <constraint firstItem="Cjp-HH-NBl" firstAttribute="top" secondItem="GXd-V8-PtS" secondAttribute="top" priority="749" id="Apz-Fq-nsg"/>
+                                    <constraint firstItem="2sk-FY-6oz" firstAttribute="top" secondItem="GXd-V8-PtS" secondAttribute="top" priority="750" id="BKM-RZ-9F6"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cjp-HH-NBl" secondAttribute="bottom" id="BsA-vG-zm0"/>
+                                    <constraint firstItem="Cjp-HH-NBl" firstAttribute="leading" secondItem="GXd-V8-PtS" secondAttribute="leading" id="WEu-XR-gG9"/>
+                                    <constraint firstItem="Cjp-HH-NBl" firstAttribute="top" secondItem="2sk-FY-6oz" secondAttribute="bottom" id="kSA-c2-hmG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="GXd-V8-PtS" secondAttribute="bottom" id="APb-RT-jFx"/>
+                            <constraint firstAttribute="trailing" secondItem="GXd-V8-PtS" secondAttribute="trailing" id="B20-o0-asW"/>
+                            <constraint firstItem="YIq-8V-IuZ" firstAttribute="leading" secondItem="wkh-7f-60k" secondAttribute="leading" id="Fb1-ou-Cqy"/>
+                            <constraint firstItem="GXd-V8-PtS" firstAttribute="leading" secondItem="wkh-7f-60k" secondAttribute="leading" id="HGr-75-rBJ"/>
+                            <constraint firstAttribute="trailing" secondItem="YIq-8V-IuZ" secondAttribute="trailing" id="eH5-X6-Fqx"/>
+                            <constraint firstItem="GXd-V8-PtS" firstAttribute="top" secondItem="YIq-8V-IuZ" secondAttribute="bottom" id="t5n-rJ-3bc"/>
+                            <constraint firstItem="YIq-8V-IuZ" firstAttribute="top" secondItem="wkh-7f-60k" secondAttribute="top" id="yEU-Q5-pox"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentContainerView" destination="2sk-FY-6oz" id="74C-01-SrL"/>
+                        <outlet property="contentContainerViewHeightConstraint" destination="Ube-fN-A2m" id="8tM-UQ-4Lv"/>
+                        <outlet property="contentContainerViewHiddenConstraint" destination="Apz-Fq-nsg" id="abE-Gb-t9v"/>
+                        <outlet property="contentContainerViewOffsetConstraint" destination="fZS-8M-ZFv" id="jC1-qr-7Ps"/>
+                        <outlet property="maskButton" destination="Cjp-HH-NBl" id="5pG-2W-G2b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pd5-LV-3eY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="234.40000000000001" y="150"/>
+        </scene>
+    </scenes>
+</document>

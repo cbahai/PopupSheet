@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6E12778205B410800B63EB9 /* PopupSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E12777205B410800B63EB9 /* PopupSheetViewController.swift */; };
+		E6E1277A205B416B00B63EB9 /* PopupSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E12779205B416B00B63EB9 /* PopupSheet.storyboard */; };
 		E6F36659205A6E4A00B7F6FC /* PopupSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = E6F36657205A6E4A00B7F6FC /* PopupSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E6E12777205B410800B63EB9 /* PopupSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSheetViewController.swift; sourceTree = "<group>"; };
+		E6E12779205B416B00B63EB9 /* PopupSheet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopupSheet.storyboard; sourceTree = "<group>"; };
 		E6F36654205A6E4A00B7F6FC /* PopupSheet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PopupSheet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F36657205A6E4A00B7F6FC /* PopupSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopupSheet.h; sourceTree = "<group>"; };
 		E6F36658205A6E4A00B7F6FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -27,6 +31,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E6E12776205B40E500B63EB9 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E6E12777205B410800B63EB9 /* PopupSheetViewController.swift */,
+				E6E12779205B416B00B63EB9 /* PopupSheet.storyboard */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		E6F3664A205A6E4A00B7F6FC = {
 			isa = PBXGroup;
 			children = (
@@ -46,6 +59,7 @@
 		E6F36656205A6E4A00B7F6FC /* PopupSheet */ = {
 			isa = PBXGroup;
 			children = (
+				E6E12776205B40E500B63EB9 /* Sources */,
 				E6F36657205A6E4A00B7F6FC /* PopupSheet.h */,
 				E6F36658205A6E4A00B7F6FC /* Info.plist */,
 			);
@@ -95,6 +109,7 @@
 				TargetAttributes = {
 					E6F36653205A6E4A00B7F6FC = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -121,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6E1277A205B416B00B63EB9 /* PopupSheet.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6E12778205B410800B63EB9 /* PopupSheetViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +203,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -240,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -253,6 +270,7 @@
 		E6F3665D205A6E4A00B7F6FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -265,6 +283,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.FYH.PopupSheet;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -273,6 +292,7 @@
 		E6F3665E205A6E4A00B7F6FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
