@@ -22,18 +22,19 @@ public class PopupSheetViewController: UIViewController {
         case right
     }
     
-    /// 内容(必须)
-    public var content: PopupSheetContent!
     /// 偏移量
     public var offset: CGFloat = 0
     /// 用来计算偏移量的视图
     public var offsetView: UIView?
     /// 在原有的偏移量额外添加的偏移量
     public var addOffset: CGFloat = 0
-    /// 坐落位置
-    public var location: Location = .top
     /// 显示及消失回调
     public var callback: ((PopupSheetViewController, Bool/*显示(true);消失(false)*/) -> Void)?
+    
+    /// 内容
+    var content: PopupSheetContent!
+    /// 坐落位置
+    var location: Location!
     
     @IBOutlet weak var contentContainerViewOffsetConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentContainerViewHeightConstraint: NSLayoutConstraint!
@@ -41,8 +42,26 @@ public class PopupSheetViewController: UIViewController {
     @IBOutlet weak var contentContainerView: UIView!
     @IBOutlet weak var maskButton: UIButton!
     
-    public static func newInstance() -> PopupSheetViewController {
-        return UIStoryboard(name: "PopupSheet", bundle: Bundle(for: self.classForCoder())).instantiateViewController(withIdentifier: "top") as! PopupSheetViewController
+    public static func newInstance(withContent content: PopupSheetContent, location: Location = .top) -> PopupSheetViewController {
+        let bundle = Bundle(for: self.classForCoder())
+        
+        let identifier: String
+        switch location {
+        case .top:
+            identifier = "top"
+        case .bottom:
+            identifier = "bottom"
+        case .left:
+            identifier = "left"
+        case .right:
+            identifier = "right"
+        }
+        
+        let vc = UIStoryboard(name: "PopupSheet", bundle: bundle).instantiateViewController(withIdentifier: identifier) as! PopupSheetViewController
+        vc.content = content
+        vc.location = location
+        
+        return vc
     }
     
     public override func viewDidLoad() {
@@ -51,7 +70,7 @@ public class PopupSheetViewController: UIViewController {
         // 偏移量设置 {
         if let offsetView = self.offsetView {
             let frame = offsetView.superview!.convert(offsetView.frame, to: self.view)
-            switch location {
+            switch location! {
             case .top:
                 offset = frame.origin.y + frame.height
             case .bottom: ()
