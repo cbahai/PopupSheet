@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6E12782205B526000B63EB9 /* PopupSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E12783205B526000B63EB9 /* PopupSheet.framework */; };
+		E6E12784205B526900B63EB9 /* PopupSheet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6E12783205B526000B63EB9 /* PopupSheet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6F3666C205A73C200B7F6FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F3666B205A73C200B7F6FC /* AppDelegate.swift */; };
 		E6F3666E205A73C200B7F6FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F3666D205A73C200B7F6FC /* ViewController.swift */; };
 		E6F36671205A73C200B7F6FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F3666F205A73C200B7F6FC /* Main.storyboard */; };
@@ -14,7 +16,22 @@
 		E6F36676205A73C200B7F6FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F36674205A73C200B7F6FC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E6E12781205B524600B63EB9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E6E12784205B526900B63EB9 /* PopupSheet.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		E6E12783205B526000B63EB9 /* PopupSheet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PopupSheet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F36668205A73C200B7F6FC /* PopupSheetDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopupSheetDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F3666B205A73C200B7F6FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6F3666D205A73C200B7F6FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +46,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6E12782205B526000B63EB9 /* PopupSheet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E6E1277B205B522200B63EB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6E12783205B526000B63EB9 /* PopupSheet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E6F3665F205A73C200B7F6FC = {
 			isa = PBXGroup;
 			children = (
 				E6F3666A205A73C200B7F6FC /* PopupSheetDemo */,
 				E6F36669205A73C200B7F6FC /* Products */,
+				E6E1277B205B522200B63EB9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +101,7 @@
 				E6F36664205A73C200B7F6FC /* Sources */,
 				E6F36665205A73C200B7F6FC /* Frameworks */,
 				E6F36666205A73C200B7F6FC /* Resources */,
+				E6E12781205B524600B63EB9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -211,7 +239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -262,7 +290,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
