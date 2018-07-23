@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objc
 public protocol PopupSheetContent {}
 extension UIView: PopupSheetContent {}
 extension UIViewController: PopupSheetContent {}
@@ -15,7 +16,8 @@ extension UIViewController: PopupSheetContent {}
 public class PopupSheetViewController: UIViewController {
     
     /// 弹出方向枚举
-    public enum PopupDirection {
+    @objc
+    public enum PopupDirection: Int {
         case up
         case down
         case left
@@ -23,12 +25,16 @@ public class PopupSheetViewController: UIViewController {
     }
     
     /// 偏移量
+    @objc
     public var offset: CGFloat = 0
     /// 用来计算偏移量的视图(优先于offset)
+    @objc
     public var offsetView: UIView?
     /// 在原有的偏移量额外添加的偏移量
+    @objc
     public var addOffset: CGFloat = 0
     /// 显示及消失回调
+    @objc
     public var callback: ((PopupSheetViewController, Bool/*显示(true);消失(false)*/) -> Void)?
     
     /// 内容
@@ -42,6 +48,7 @@ public class PopupSheetViewController: UIViewController {
     @IBOutlet weak var contentContainerView: UIView!
     @IBOutlet weak var maskButton: UIButton!
     
+    @objc
     public static func newInstance(withContent content: PopupSheetContent, direction: PopupDirection = .up) -> PopupSheetViewController {
         let bundle = Bundle(for: self.classForCoder())
         
@@ -119,6 +126,7 @@ public class PopupSheetViewController: UIViewController {
         }
     }
     
+    @objc
     public func show(in viewController: UIViewController) {
         modalPresentationStyle = .overFullScreen
         viewController.present(self, animated: false) { [weak self] in
@@ -132,6 +140,7 @@ public class PopupSheetViewController: UIViewController {
         callback?(self, true)
     }
     
+    @objc
     public func dismiss() {
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.maskButton.alpha = 0
