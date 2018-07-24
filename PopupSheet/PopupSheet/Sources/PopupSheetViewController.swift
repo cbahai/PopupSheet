@@ -128,6 +128,11 @@ public class PopupSheetViewController: UIViewController {
     
     @objc
     public func show(in viewController: UIViewController) {
+        show(in: viewController, completion: nil)
+    }
+    
+    @objc
+    public func show(in viewController: UIViewController, completion: (() -> Void)?) {
         modalPresentationStyle = .overFullScreen
         viewController.present(self, animated: false) { [weak self] in
             guard let this = self else { return }
@@ -135,6 +140,10 @@ public class PopupSheetViewController: UIViewController {
                 this?.maskButton.alpha = 1
                 this?.contentContainerViewHiddenConstraint.priority = UILayoutPriority(UILayoutPriority.defaultHigh.rawValue - 1)
                 this?.view.layoutIfNeeded()
+            }, completion: { (finished) in
+                if finished {
+                    completion?()
+                }
             })
         }
         callback?(self, true)
@@ -142,6 +151,11 @@ public class PopupSheetViewController: UIViewController {
     
     @objc
     public func dismiss() {
+        dismiss(completion: nil)
+    }
+    
+    @objc
+    public func dismiss(completion: (() -> Void)?) {
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.maskButton.alpha = 0
             self?.contentContainerViewHiddenConstraint.priority = UILayoutPriority(UILayoutPriority.defaultHigh.rawValue + 1)
@@ -150,9 +164,10 @@ public class PopupSheetViewController: UIViewController {
             guard let this = self else { return }
             if finished {
                 this.dismiss(animated: false)
-                this.callback?(this, false)
+                completion?()
             }
         })
+        callback?(self, false)
     }
     
     func add(subView: UIView, to superView: UIView) {
