@@ -92,7 +92,7 @@ public class PopupSheetViewController: UIViewController {
         // }
         
         maskButton.alpha = 0
-        contentContainerViewHiddenConstraint.priority = UILayoutPriority(UILayoutPriority.defaultHigh.rawValue + 2)
+        contentContainerViewHiddenConstraint.priority = .defaultHigh
         contentContainerViewOffsetConstraint.constant = offset
         
         if let content = self.content as? UIView {
@@ -158,7 +158,7 @@ public class PopupSheetViewController: UIViewController {
     public func dismiss(completion: (() -> Void)?) {
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.maskButton.alpha = 0
-            self?.contentContainerViewHiddenConstraint.priority = UILayoutPriority(UILayoutPriority.defaultHigh.rawValue + 1)
+            self?.contentContainerViewHiddenConstraint.priority = .defaultHigh
             self?.view.layoutIfNeeded()
         }, completion: { [weak self] (finished) in
             guard let this = self else { return }
