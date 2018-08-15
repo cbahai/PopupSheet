@@ -20,9 +20,7 @@ class ViewController: UIViewController {
     }
     
     func viewControllerContent() -> UIViewController {
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "B")
-        viewController.view.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        return viewController
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "B")
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {
@@ -39,13 +37,13 @@ class ViewController: UIViewController {
             psvc = PopupSheetViewController.newInstance(withContent: viewContent(), direction: .left)
         case 4:
             psvc = PopupSheetViewController.newInstance(withContent: viewContent(), direction: .right)
-            psvc.offsetView = sender
+            psvc.offset = 60
         case 5:
             if self.strongPsvc == nil {
-                self.strongPsvc = PopupSheetViewController.newInstance(withContent: viewControllerContent(), direction: .down)
+                self.strongPsvc = PopupSheetViewController.newInstance(withContent: viewControllerContent(), direction: .up)
             }
             psvc = self.strongPsvc
-            psvc.offsetView = self.navigationController?.navigationBar
+            psvc.displayLength = 280
         default:
             psvc = PopupSheetViewController.newInstance(withContent: viewContent(), direction: .down)
             psvc.offsetView = self.navigationController?.navigationBar
