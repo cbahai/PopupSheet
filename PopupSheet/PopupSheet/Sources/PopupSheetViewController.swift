@@ -24,6 +24,9 @@ public class PopupSheetViewController: UIViewController {
         case right
     }
     
+    /// 显示长度(设置一个优先级为750的约束)
+    @objc
+    public var displayLength: CGFloat = 0
     /// 偏移量
     @objc
     public var offset: CGFloat = 0
@@ -96,21 +99,9 @@ public class PopupSheetViewController: UIViewController {
         contentContainerViewOffsetConstraint.constant = offset
         
         if let content = self.content as? UIView {
-            switch direction! {
-            case .up, .down:
-                contentContainerViewLengthConstraint.constant = content.frame.height
-            case .left, .right:
-                contentContainerViewLengthConstraint.constant = content.frame.width
-            }
             add(subView: content, to: contentContainerView)
         } else if let content = self.content as? UIViewController {
             addChildViewController(content)
-            switch direction! {
-            case .up, .down:
-                contentContainerViewLengthConstraint.constant = content.view.frame.height
-            case .left, .right:
-                contentContainerViewLengthConstraint.constant = content.view.frame.width
-            }
             add(subView: content.view, to: contentContainerView)
             content.didMove(toParentViewController: self)
         }
@@ -170,7 +161,18 @@ public class PopupSheetViewController: UIViewController {
         callback?(self, false)
     }
     
-    func add(subView: UIView, to superView: UIView) {
+    private func add(subView: UIView, to superView: UIView) {
+        if displayLength > 0 {
+            contentContainerViewLengthConstraint.constant = displayLength
+        } else {
+            switch direction! {
+            case .up, .down:
+                contentContainerViewLengthConstraint.constant = subView.frame.height
+            case .left, .right:
+                contentContainerViewLengthConstraint.constant = subView.frame.width
+            }
+        }
+        
         superView.addSubview(subView)
         subView.translatesAutoresizingMaskIntoConstraints = false
         let views = ["subView": subView]
